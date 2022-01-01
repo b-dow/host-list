@@ -4,10 +4,10 @@ library(tidyverse)
 
 
 
-file_01 <- as_tibble(c("0.0.0.0 facebook.com"))
-colnames(file_01)[1] <- "Website"
-#file_01 <- as_tibble(as_tibble(read_csv("https://raw.githubusercontent.com/WorldWideBlock/netguard-block/master/hosts.txt")))
+#file_01 <- as_tibble(c("0.0.0.0 facebook.com"))
 #colnames(file_01)[1] <- "Website"
+file_01 <- as_tibble(read_csv("https://raw.githubusercontent.com/WorldWideBlock/netguard-block/master/hosts.txt"))
+colnames(file_01)[1] <- "Website"
 
 file_02 <- as_tibble(read_csv("https://raw.githubusercontent.com/lightswitch05/hosts/master/docs/lists/ads-and-tracking-extended.txt"))
 colnames(file_02)[1] <- "Website"
