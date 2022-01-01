@@ -4,9 +4,7 @@ library(tidyverse)
 
 
 
-#file_01 <- as_tibble(c("0.0.0.0 facebook.com"))
-#colnames(file_01)[1] <- "Website"
-file_01 <- as_tibble(read_csv("https://raw.githubusercontent.com/WorldWideBlock/netguard-block/master/hosts.txt"))
+file_01 <- as_tibble(c("0.0.0.0 facebook.com"))
 colnames(file_01)[1] <- "Website"
 
 file_02 <- as_tibble(read_csv("https://raw.githubusercontent.com/lightswitch05/hosts/master/docs/lists/ads-and-tracking-extended.txt"))
@@ -21,7 +19,6 @@ colnames(file_04)[1] <- "Website"
 file_05 <- as_tibble(read_csv("https://raw.githubusercontent.com/lightswitch05/hosts/master/docs/lists/facebook-extended.txt"))
 colnames(file_05)[1] <- "Website"
 
-### file_06
 file_06 <- as_tibble(c("0.0.0.0 facebook.com"))
 colnames(file_06)[1] <- "Website"
 
@@ -33,32 +30,29 @@ colnames(file_08)[1] <- "Website"
 file_08 <- as_tibble(paste0(" 0.0.0.0 ", file_08$Website))
 colnames(file_08)[1] <- "Website"
 
-### file_06
-file_09 <- as_tibble(c("0.0.0.0 facebook.com"))
+file_09 <- read_csv("https://raw.githubusercontent.com/justdomains/blocklists/master/lists/adguarddns-justdomains.txt")
+colnames(file_09)[1] <- "Website"
+file_09 <- as_tibble(paste0(" 0.0.0.0 ", file_09$Website))
 colnames(file_09)[1] <- "Website"
 
-#file_10 <- as_tibble(read_csv("https://blocklistproject.github.io/Lists/everything.txt"))
-#colnames(file_10)[1] <- "Website"
-file_10 <- as_tibble(c("0.0.0.0 facebook.com"))
+file_10 <- as_tibble(read_csv("https://blocklistproject.github.io/Lists/redirect.txt"))
 colnames(file_10)[1] <- "Website"
+#file_10 <- as_tibble(c("0.0.0.0 facebook.com"))
+#colnames(file_10)[1] <- "Website"
 
 
-#file_11 <- as_tibble(read_csv("https://blocklistproject.github.io/Lists/porn.txt"))
-#colnames(file_11)[1] <- "Website"
-file_11 <- as_tibble(c("0.0.0.0 facebook.com"))
+file_11 <- as_tibble(read_csv("https://blocklistproject.github.io/Lists/facebook.txt"))
 colnames(file_11)[1] <- "Website"
 
-#file_12 <- as_tibble(read_csv("https://blocklistproject.github.io/Lists/ads.txt"))
-#colnames(file_12)[1] <- "Website"
-file_12 <- as_tibble(c("0.0.0.0 facebook.com"))
+file_12 <- as_tibble(read_csv("https://blocklistproject.github.io/Lists/ads.txt"))
 colnames(file_12)[1] <- "Website"
+#file_12 <- as_tibble(c("0.0.0.0 facebook.com"))
+#colnames(file_12)[1] <- "Website"
 
 file_13 <- as_tibble(read_csv("https://blocklistproject.github.io/Lists/tracking.txt"))
 colnames(file_13)[1] <- "Website"
 
-file_14 <- read_csv("https://raw.githubusercontent.com/justdomains/blocklists/master/lists/adguarddns-justdomains.txt")
-colnames(file_14)[1] <- "Website"
-file_14 <- as_tibble(paste0(" 0.0.0.0 ", file_14$Website))
+file_14 <- as_tibble(c("0.0.0.0 facebook.com"))
 colnames(file_14)[1] <- "Website"
 
 file_15 <- as_tibble(read_csv("https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts"))
@@ -69,9 +63,13 @@ file_16 <- as_tibble(read_csv("https://raw.githubusercontent.com/StevenBlack/hos
 colnames(file_16)[1] <- "Website"
 #file_16 <- file_16 %>% select(-2, -3) 
 
+file_17 <- as_tibble(read_csv("https://raw.githubusercontent.com/WorldWideBlock/netguard-block/master/hosts.txt"))
+colnames(file_17)[1] <- "Website"
 
 
-df <- rbind(file_01,file_02,file_03,file_04,file_05,file_06,file_07,file_08,file_09,file_10,file_11,file_12,file_13,file_14,file_15,file_16)
+###############################
+
+df <- rbind(file_01,file_02,file_03,file_04,file_05,file_06,file_07,file_08,file_09,file_10,file_11,file_12,file_13,file_14,file_15,file_16,file_17)
 df <- df %>% distinct(.keep_all = TRUE)
 df$Website <- sub("#.*", "", df$Website)
 
