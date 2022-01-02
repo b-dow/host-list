@@ -1,10 +1,9 @@
 if(!require(tidyverse)){install.packages('tidyverse', dependencies = TRUE)}
-## On linux mint 18.04+ (XFCE), required PPA for tidyverse dependencies: $ sudo apt-get install r-cran-tidyverse
 library(tidyverse)
 
 
 
-file_01 <- as_tibble(c("0.0.0.0 facebook.com"))
+file_01 <- as_tibble(read_csv("https://raw.githubusercontent.com/lightswitch05/hosts/master/docs/lists/tracking-aggressive-extended.txt"))
 colnames(file_01)[1] <- "Website"
 
 file_02 <- as_tibble(read_csv("https://raw.githubusercontent.com/lightswitch05/hosts/master/docs/lists/ads-and-tracking-extended.txt"))
@@ -27,13 +26,17 @@ colnames(file_07)[1] <- "Website"
 
 file_08 <- read_csv("https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/black.list")
 colnames(file_08)[1] <- "Website"
-file_08 <- as_tibble(paste0(" 0.0.0.0 ", file_08$Website))
+file_08 <- as_tibble(paste0("0.0.0.0 ", file_08$Website))
 colnames(file_08)[1] <- "Website"
 
 file_09 <- read_csv("https://raw.githubusercontent.com/justdomains/blocklists/master/lists/adguarddns-justdomains.txt")
 colnames(file_09)[1] <- "Website"
-file_09 <- as_tibble(paste0(" 0.0.0.0 ", file_09$Website))
+file_09 <- as_tibble(paste0("0.0.0.0 ", file_09$Website))
 colnames(file_09)[1] <- "Website"
+
+
+
+
 
 file_10 <- as_tibble(read_csv("https://blocklistproject.github.io/Lists/redirect.txt"))
 colnames(file_10)[1] <- "Website"
@@ -55,13 +58,14 @@ colnames(file_13)[1] <- "Website"
 file_14 <- as_tibble(c("0.0.0.0 facebook.com"))
 colnames(file_14)[1] <- "Website"
 
-file_15 <- as_tibble(read_csv("https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts"))
+file_15 <- as_tibble(read_csv("https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-porn/hosts"))
 colnames(file_15)[1] <- "Website"
-file_15 <- file_15 %>% select(-2, -3) 
+#file_15 <- file_15 %>% select(-2, -3) 
 
-file_16 <- as_tibble(read_csv("https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"))
+file_16 <- read_csv("https://v.firebog.net/hosts/Easyprivacy.txt")
 colnames(file_16)[1] <- "Website"
-#file_16 <- file_16 %>% select(-2, -3) 
+file_16 <- as_tibble(paste0("0.0.0.0 ", file_16$Website))
+colnames(file_16)[1] <- "Website"
 
 file_17 <- as_tibble(read_csv("https://raw.githubusercontent.com/WorldWideBlock/netguard-block/master/hosts.txt"))
 colnames(file_17)[1] <- "Website"
